@@ -1,0 +1,1 @@
+https://www.kaggle.com/datasets/tr1gg3rtrash/global-disaster-risk-index-time-series-dataset
