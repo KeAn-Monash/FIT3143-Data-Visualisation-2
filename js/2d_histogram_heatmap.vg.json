@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": { "url": "data/world_risk_index.csv" },
+  "width": 500,
+  "height": 500,
+  "padding": 5,
+  "layer": [
+    {
+      "mark": {
+        "type": "rect",
+        "tooltip": true
+      },
+      "encoding": {
+        "x": {
+          "bin": { "maxbins": 40 },
+          "field": "Lack of Coping Capabilities",
+          "type": "quantitative"
+        },
+        "y": {
+          "bin": { "maxbins": 40 },
+          "field": "Lack of Adaptive Capacities",
+          "type": "quantitative"
+        },
+        "color": {
+          "aggregate": "count",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": "point",
+      "encoding": {
+        "x": {
+          "bin": { "maxbins": 40 },
+          "field": "Lack of Coping Capabilities",
+          "type": "quantitative"
+        },
+        "y": {
+          "bin": { "maxbins": 40 },
+          "field": "Lack of Adaptive Capacities",
+          "type": "quantitative"
+        },
+        "size": {
+          "title": "Average World Risk Index",
+          "field": "WRI",
+          "aggregate": "average"
+        },
+        "color": {
+          "value": "#666"
+        },
+        "tooltip": [
+          {
+            "field": "WRI",
+            "aggregate": "average"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+  }
+}

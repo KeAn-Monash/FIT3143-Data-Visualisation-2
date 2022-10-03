@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "",
+  "width": 1300,
+  "height": 600,
+  "title": "World Disaster Risk Index",
+  "projection": {
+    "type": "equirectangular"
+  },
+  "data": {
+    "url": "./js/ne_110m_admin_0_countries.json",
+    "format": {
+      "type": "topojson",
+      "feature": "ne_110m_admin_0_countries"
+    }
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "js/ne_110m_admin_0_countries.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_admin_0_countries"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "gray"
+      }
+    },
+    {
+      "transform": [
+        {
+          "lookup": "properties.NAME",
+          "from": {
+            "data": {
+              "url": "data/world_risk_index.csv"
+            },
+            "key": "Region",
+            "fields": ["WRI"]
+          }
+        },
+        {
+          "calculate": "datum.Score + 0.1",
+          "as": "World Risk Index"
+        }
+      ],
+      "mark": {
+        "type": "geoshape"
+      },
+      "encoding": {
+        "color": {
+          "field": "WRI",
+          "title": "World Risk Index",
+          "type": "quantitative",
+          "scale": {
+            "type": "linear",
+            "reverse": true,
+            "domainMax": 60,
+            "range": ["#0A2D4D", "#FA745A"]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "properties.NAME",
+            "type": "nominal",
+            "title": "Region"
+          },
+          {
+            "field": "WRI",
+            "type": "quantitative",
+            "title": "World Risk Index"
+          }
+        ]
+      }
+    }
+  ]
+}
