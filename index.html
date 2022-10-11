@@ -11,9 +11,40 @@
     <title>Data Visualisation 2</title>
 </head>
 <body>
-    <div id="map_plot"></div>
+    <h1 class="title">World Risk Report</h1>
+    <p>The WorldRiskReport is an annual technical report on global disaster 
+        risks. The yearly issues of the WorldRiskReport focus on varying critical 
+        topics related to disaster risk management and are published in German and 
+        English. The report includes the WorldRiskIndex, which identifies the risk 
+        of an extreme natural event becoming a disaster for numerous countries worldwide.
+    </p>
+    <div id="map_plot" class="full-width"></div>
+    <p>
+        The WorldRiskIndex uses 27 aggregated, publicly available indicators to determine disaster 
+        risk for 181 countries worldwide. Conceptually, the index is composed of exposure to extreme 
+        natural hazards and the societal vulnerability of individual countries. Earthquakes, cyclones, 
+        floods, droughts, and climate-induced sea-level rise are considered in the exposure analysis. 
+        Societal vulnerability is divided into susceptibility to extreme natural events, lack of coping 
+        capacities, and lack of adaptive capacities. All index components are scaled to the value range 
+        from 0 to 100. The higher a country's index score on the WorldRiskIndex, the higher its national 
+        disaster risk. In the dataset,
+        <ul>
+            <li>WRI indicates the World Risk Score of the region</li>
+            <li>Exposure shows the Risk/exposure to natural hazards such as earthquakes, hurricanes, floods, droughts, and sea level rise</li>
+            <li>Vulnerability shows the Vulnerability depending on infrastructure, nutrition, housing situation, and economic framework conditions</li>
+            <li>Susceptibility shows the Susceptibility depending on infrastructure, nutrition, housing situation, and economic framework conditions</li>
+        </ul>
+        In addition, depending on the value of the attributes above, they are divided into 5 categories: <b>Very Low</b>, <b>Low</b>, <b>Medium</b>, <b>High</b>, <b>Very high</b>.
+    </p>
     <div id="plot1"></div>
-    <div id="plot2"></div>
+    <div>
+        The following attributes are also considered when rating the score for different countries/regions
+        <ul>
+            <li>Lack of Coping Capabilities	indicates the Coping capacities in dependence of governance, preparedness and early warning, medical care, and social and material security</li>
+            <li>Lack of Adaptive Capacities	indicates the Adaptive capacities related to coming natural events, climate change, and other challenges</li>
+        </ul>
+    </div>
+    <div id="plot2" class="plot-center"></div>
 
     <script type="text/javascript">
         const map_plot = "js/map_plot.vg.json";
