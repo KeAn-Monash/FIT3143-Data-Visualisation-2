@@ -11,45 +11,114 @@
     <title>Data Visualisation 2</title>
 </head>
 <body>
-    <h1 class="title">World Risk Report</h1>
-    <p>The WorldRiskReport is an annual technical report on global disaster 
-        risks. The yearly issues of the WorldRiskReport focus on varying critical 
-        topics related to disaster risk management and are published in German and 
-        English. The report includes the WorldRiskIndex, which identifies the risk 
-        of an extreme natural event becoming a disaster for numerous countries worldwide.
-    </p>
-    <div id="map_plot" class="full-width"></div>
-    <p>
-        The WorldRiskIndex uses 27 aggregated, publicly available indicators to determine disaster 
-        risk for 181 countries worldwide. Conceptually, the index is composed of exposure to extreme 
-        natural hazards and the societal vulnerability of individual countries. Earthquakes, cyclones, 
-        floods, droughts, and climate-induced sea-level rise are considered in the exposure analysis. 
-        Societal vulnerability is divided into susceptibility to extreme natural events, lack of coping 
-        capacities, and lack of adaptive capacities. All index components are scaled to the value range 
-        from 0 to 100. The higher a country's index score on the WorldRiskIndex, the higher its national 
-        disaster risk. In the dataset,
-        <ul>
-            <li>WRI indicates the World Risk Score of the region</li>
-            <li>Exposure shows the Risk/exposure to natural hazards such as earthquakes, hurricanes, floods, droughts, and sea level rise</li>
-            <li>Vulnerability shows the Vulnerability depending on infrastructure, nutrition, housing situation, and economic framework conditions</li>
-            <li>Susceptibility shows the Susceptibility depending on infrastructure, nutrition, housing situation, and economic framework conditions</li>
-        </ul>
-        In addition, depending on the value of the attributes above, they are divided into 5 categories: <b>Very Low</b>, <b>Low</b>, <b>Medium</b>, <b>High</b>, <b>Very high</b>.
-    </p>
-    <div id="plot1"></div>
-    <div>
-        The following attributes are also considered when rating the score for different countries/regions
-        <ul>
-            <li>Lack of Coping Capabilities	indicates the Coping capacities in dependence of governance, preparedness and early warning, medical care, and social and material security</li>
-            <li>Lack of Adaptive Capacities	indicates the Adaptive capacities related to coming natural events, climate change, and other challenges</li>
-        </ul>
+    <div class="header-container">
+        <div class="header">
+            <img src="img/earth.png" class="header-img" />
+            <div class="title">World Disaster Risk</div>
+            <p class="subtitle">
+                focus on varying critical topics related to disaster risk management
+            </p>
+        </div>
     </div>
-    <div id="plot2" class="plot-center"></div>
-
+    <div class="card" style="background-color: whitesmoke;">
+        <p class="inline-title">
+            World Risk Index
+        </p>
+        <p style="margin-left: 10%; margin-right: 10%;">
+            The following map shows the average risk index around the world from year 2011 to year 2021. 
+            Among all the countries, Katar has the smallest risk index among all the countries, which is 
+            <span style="color:#59C9A5; font-weight: bold;">0.02</span> and recorded in year <b>2011</b>. 
+            Vanuatu has the highest risk index recorded in year 
+            <b>2019</b>, which is <span style="color: #033F63; font-weight: bold;">56.71</span>.
+        </p>
+        <div style="padding: 1rem; margin-left: 10%; margin-right: 5%;">
+            <div id="map_plot" class="full-width"></div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="card" style="background-color: light">
+        <p class="inline-title">
+            Relationship of Exposure, Vulnerability and Susceptibility against World Risk Index
+        </p>
+        <p>
+            The risk index is composed of <b>exposure</b> to extreme natural hazards and the <b>societal vulnerability</b> 
+            of individual countries. Earthquakes, cyclones, floods, droughts, and climate-induced 
+            sea-level rise are considered in the exposure analysis. Societal vulnerability is divided into susceptibility to extreme natural events, lack of coping 
+            capacities, and lack of adaptive capacities. All index components are scaled to the value range 
+            from 0 to 100. The higher a country's index score, the higher its national disaster risk
+            <br /><br />
+            <i>**Try to select using button to change the shown attributes</i>
+        </p>
+        <div class="button-wrapper">
+            <button class="index-button" onclick="showHidePlot('exposure')">
+                Exposure
+            </button>
+            <button class="index-button" onclick="showHidePlot('vulnerability')">
+                Vulnerability
+            </button>
+            <button class="index-button" onclick="showHidePlot('susceptibility')">
+                Susceptibility
+            </button>
+        </div>
+        <div class="plot-center">
+            <div id="scatter_bar_exposure" class="sb"></div>
+            <div id="scatter_bar_vulnerability" class="sb" style="display: none;"></div>
+            <div id="scatter_bar_susceptibility" class="sb" style="display: none;"></div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="card" style="background-color: rgba(32, 178, 171, 0.123);">
+        <p class="inline-title">
+            Relationship of 
+            <div class="inline-title-cat">Exposure</div>, 
+            <div class="inline-title-cat">Vulnerability</div> and 
+            <div class="inline-title-cat">Susceptibility</div> against World Risk Index
+        </p>
+        <div style="margin-left: 10%; margin-right: 10%;">
+            The <b>lack of Coping Capabilities</b> indicates the Coping capacities in dependence of governance, preparedness and early warning, medical care, and social and material security
+            while the <b>lack of Adaptive Capacities</b> indicates the Adaptive capacities related to coming natural events, climate change, and other challenges
+        </div>
+        <div class="plot-center" style="padding: 1rem; margin-top: 1rem;margin-left: 5%;">
+            <div id="plot2"></div>
+        </div>
+    </div>
+    <div class="card">
+        <p class="inline-title">
+            Overview of the regions with lowest risk
+        </p>
+        <div class="plot-center" style="display: flex; flex-direction: row; justify-content:space-evenly;">
+            <div class="text-box" style="flex-direction: column">
+                The chart at the right gives an overview of the regions with the lowest risk 
+                <i style="font-weight:bold">from year 2011 to year 2021.</i>
+                <b>Qatar</b> has recorded as the regions with lowest risk throughout the 10 year period. 
+                <b>Malta</b> stays at the 2nd 
+                place in the world which has the 2nd lowest risk index. 
+                <br /><br />
+                For the rest of the regions, they have recorded differently in the 10 year period. However, 
+                <b>Saudi Arabia</b> and 
+                <b>Barbados</b> have a similar rank which indicates that they are the regions that have lower risk index among all 
+                the countries and is ranked 3rd.
+                <br /><br />
+                <i style="font-size: small;">**try to slide the slider to change the rank</i>
+            </div>
+            <div id="bump_chart"></div>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <div class="card" style="text-align: right; background-color: whitesmoke;">
+        Created by <a href="https://github.com/KeAn-Monash">Ke An</a>
+    </div>
+    
+    <script src="js/utils.js"></script>
     <script type="text/javascript">
+        showHidePlot('exposure');
+
         const map_plot = "js/map_plot.vg.json";
-        const plot1 = "js/scatter_bar_plot.vg.json"
+        const scatter_bar_exposure = "js/scatter_bar_plot_exposure.vg.json"
+        const scatter_bar_vulnerability = "js/scatter_bar_plot_vulnerability.vg.json"
+        const scatter_bar_susceptibility = "js/scatter_bar_plot_susceptibility.vg.json"
         const plot2 = "js/2d_histogram_heatmap.vg.json"
+        const bump_chart = "js/bump_chart.vg.json"
 
         vegaEmbed('#map_plot', map_plot).then(
             (result) => {
@@ -59,13 +128,29 @@
             console.error
         );
 
-        vegaEmbed("#plot1", plot1).then(
+        vegaEmbed("#scatter_bar_exposure", scatter_bar_exposure).then(
             (result) => {
 
             }
         ).catch(
             console.error
-        )
+        );
+
+        vegaEmbed("#scatter_bar_vulnerability", scatter_bar_vulnerability).then(
+            (result) => {
+
+            }
+        ).catch(
+            console.error
+        );
+
+        vegaEmbed("#scatter_bar_susceptibility", scatter_bar_susceptibility).then(
+            (result) => {
+
+            }
+        ).catch(
+            console.error
+        );
 
         vegaEmbed("#plot2", plot2).then(
             (result) => {
@@ -73,7 +158,15 @@
             }
         ).catch(
             console.error
-        )
+        );
+
+        vegaEmbed("#bump_chart", bump_chart).then(
+            (result) => {
+
+            }
+        ).catch(
+            console.error
+        );
 
     </script>
 </body>

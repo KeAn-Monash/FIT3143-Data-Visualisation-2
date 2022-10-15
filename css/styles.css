@@ -1,14 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.header-container {
+    height: 60vh;
+}
+
+.header {
+    position: relative;
+    z-index: -1;
+}
+
+.header-img {
+    opacity: 50%;
+    width: 100%;
+}
+
+.divider {
+    width: 100%;
+    height: 5vh;
+}
+
 .full-width {
     width: 100%;
-    height: 300px;
+    height: 500px;
+}
+
+.map-wrapper {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.button-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.index-button {
+    padding: 1rem;
+    font-size: medium;
+    background-color: white;
+    border-radius: 0.7rem;
 }
 
 .title {
     width: 100%;
     text-align: center;
+    font-size: 70px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    font-weight: bolder;
+    position: absolute;
+    top: 30%;
+}
+
+.subtitle {
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+}
+
+.inline-title {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.card {
+    padding: 1rem 2rem 1rem 2rem;
+    /* border-radius: 1rem; */
+
 }
 
 .plot-center {
     display: flex;
     text-align: center;
+    justify-content: space-evenly;
+}
+
+.text-box {
+    display: inline-block;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
 }

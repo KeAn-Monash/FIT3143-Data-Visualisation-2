@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/world_risk_index_clean.csv"
+  },
+  "height": 250,
+  "width": 450,
+  "params": [
+    {
+        "name": "rank_selection",
+        "value": 5,
+        "bind": {
+            "input": "range",
+            "min": 3,
+            "max": 6,
+            "step": 1
+        }
+    }
+  ],
+  "transform": [
+    {
+      "sort": [
+        {
+          "field": "WRI",
+          "order": "ascending"
+        }
+      ],
+      "window": [
+        {
+          "op": "rank",
+          "as": "rank"
+        }
+      ],
+      "groupby": ["Year"]
+    },
+    {
+        "filter": "datum.rank <= rank_selection"
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "orient": "vertical",
+    "point": true
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal"
+    },
+    "y": {
+      "field": "rank",
+      "type": "ordinal"
+    },
+    "color": {
+      "field": "Region",
+      "type": "nominal"
+    }
+  }
+}

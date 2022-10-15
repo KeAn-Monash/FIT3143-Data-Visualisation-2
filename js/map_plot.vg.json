@@ -3,10 +3,11 @@
   "description": "",
   "width": "container",
   "height": 500,
-  "title": "World Disaster Risk Index",
+  "background": null,
   "projection": {
     "type": "equalEarth"
   },
+
   "data": {
     "url": "./js/ne_110m_admin_0_countries.json",
     "format": {
@@ -41,20 +42,45 @@
       }
     },
     {
+      "data": {
+        "url": "js/oceans.topojson",
+        "format": {
+          "type": "topojson",
+          "feature": "oceans"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "skyblue",
+        "stroke": "gray",
+        "opacity": 0.3
+      }
+    },
+    {
+      "data": {
+        "url": "js/ne_110m_graticules_30.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_graticules_30"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "lightgray"
+      }
+    },
+    {
       "transform": [
         {
           "lookup": "properties.NAME",
           "from": {
             "data": {
-              "url": "data/world_risk_index_numeric.csv"
+              "url": "data/world_risk_index_average.csv"
             },
             "key": "Region",
             "fields": ["WRI"]
           }
-        },
-        {
-          "calculate": "datum.Score",
-          "as": "World Risk Index"
         }
       ],
       "mark": {
@@ -69,8 +95,8 @@
             "type": "linear",
             "reverse": true,
             "domainMin": 0,
-            "domainMax": 60,
-            "range": ["#D81E5B", "#59C9A5"]
+            "domainMax": 50,
+            "range": ["#033F63", "#59C9A5"]
           }
         },
         "tooltip": [
@@ -85,6 +111,20 @@
             "title": "World Risk Index"
           }
         ]
+      }
+    },
+    {
+      "data": {
+        "url": "js/ne_110m_admin_0_boundary_lines_land.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_admin_0_boundary_lines_land"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": null,
+        "stroke": "gray"
       }
     }
   ]

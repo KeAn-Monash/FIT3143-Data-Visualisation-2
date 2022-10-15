@@ -1,8 +1,9 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "data": { "url": "data/world_risk_index_numeric.csv" },
+  "data": { "url": "data/world_risk_index.csv" },
   "width": 400,
   "height": 400,
+  "background": null,
   "padding": 5,
   "layer": [
     {
